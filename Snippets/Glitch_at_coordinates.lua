@@ -1,16 +1,10 @@
-```lua
-
+--a helper function to turn X & Y coordinates to memory adress needed to for glitching with memcpy()
 function xy_to_mem(x,y)
   local v = 0x6000 + y*64 + flr(x/2)
   return v
 end
 
---a helper function to turn X & Y coordinates to memory adress needed to for glitching with memcpy()
-
-function basic_glitch(source,dest,range)
-  memcpy(dest,source,range)
-end
-
+--BASIC GLITCHING
 --copies and pastes a horizontal sliver of screen 
 --from one source to the dest. 
 --both source and destination have to be memory adresses
@@ -19,9 +13,11 @@ end
 --range is the lenght of the line that will be copied and pasted
 --if a line extends beyond the screen on the right
 --it will wrap around the screen at Y+=1.
+function basic_glitch(source,dest,range)
+  memcpy(dest,source,range)
+end
 
 --messy function that needs more work! use at own risk!
-
 function vertical_glitch(x,y,hight,dis,direction)
  local xy = {}
  for i=1,hight do
@@ -34,4 +30,4 @@ function vertical_glitch(x,y,hight,dis,direction)
  end
 end
 
-```
+
