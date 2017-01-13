@@ -6,12 +6,12 @@
 
 keys={}
 
-function is_held(k) return band(keys[k], 1) == 1 end
-function is_pressed(k) return band(keys[k], 2) == 2 end
-function is_released(k) return band(keys[k], 4) == 4 end
+function is_held(k) return band(keys[k], 1) == 1 end --listener for held key
+function is_pressed(k) return band(keys[k], 2) == 2 end --listener for pressed (1 tick)
+function is_released(k) return band(keys[k], 4) == 4 end --listener for released (1 tick)
 
-function upd_key(k)
-if keys[k] == 0 then
+function upd_key(k) 
+if keys[k] == 0 then 
 if btn(k) then keys[k] = 3 end
 elseif keys[k] == 1 then
 if btn(k) == false then keys[k] = 4 end
